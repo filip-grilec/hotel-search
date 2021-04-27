@@ -1,10 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using HotelSearch.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Polly;
+using Polly.Retry;
+using QuickType;
+
 
 namespace HotelSearch.Controllers
 {
@@ -14,34 +23,61 @@ namespace HotelSearch.Controllers
     {
         private readonly IMemoryCache _cache;
 
+
+        private readonly AsyncRetryPolicy<HttpResponseMessage> httpWithReauthorize = Policy
+            .HandleResult<HttpResponseMessage>(r => !r.IsSuccessStatusCode)
+            .RetryAsync(3, onRetryAsync: ReAuthorize);
+
+        private static async Task ReAuthorize(DelegateResult<HttpResponseMessage> response, int retryCount)
+        {
+            // Reauthorize
+        }
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HotelSearchApiSettings _searchApiSettings;
 
-        public WeatherForecastController(IMemoryCache cache)
+        public WeatherForecastController(IMemoryCache cache, IHttpClientFactory httpClientFactory,
+            IOptions<HotelSearchApiSettings> options)
         {
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+            _searchApiSettings = options.Value;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<HotelsResponse> Get()
         {
-            var rng = new Random();
+            var client = _httpClientFactory.CreateClient("auth-client");
 
-            return _cache.GetOrCreate("bla", entry =>
+
+            var res = await client.PostAsync("token", new FormUrlEncodedContent(new KeyValuePair<string?, string?>[]
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);
-                return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                    {
-                        Date = DateTime.Now.AddDays(index),
-                        TemperatureC = rng.Next(-20, 55),
-                        Summary = Summaries[rng.Next(Summaries.Length)]
-                    })
-                    .ToArray();
-            });
+                new("client_id", _searchApiSettings.ClientId),
+                new("grant_type", _searchApiSettings.GrantType),
+                new("client_secret", _searchApiSettings.ClientSecret)
+            }));
+
+
+            var json = await res.Content.ReadAsStringAsync();
+
+            var authInfo = JsonConvert.DeserializeObject<AuthResponse>(json);
+
+
+            var hotelClient = _httpClientFactory.CreateClient("hotel-search");
+
+
+            hotelClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + authInfo.AccessToken);
+            
+            var hotelResponse = await hotelClient.GetAsync("hotel-offers?cityCode=PAR&checkInDate=2021-06-01&checkOutDate=2021-06-10&roomQuantity=1&adults=1&radius=100&radiusUnit=KM&paymentPolicy=NONE&includeClosed=true&bestRateOnly=true&view=FULL&sort=NONE&page%5Blimit%5D=50");
+
+
+
+            return JsonConvert.DeserializeObject<HotelsResponse>(await hotelResponse.Content.ReadAsStringAsync());
 
         }
     }
