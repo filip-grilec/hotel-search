@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Security.Authentication;
@@ -13,7 +14,9 @@ namespace HotelSearch.Authentication
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly HotelSearchApiSettings _searchApiSettings;
 
-        private AuthResponse? _authInfo = new() {AccessToken = "This is just to show reauthorize functionality"};
+        private AuthResponse? _authInfo;
+        private readonly int _defaultExpireInSeconds = 1800;
+        private DateTime _tokenReceivedUtc;
 
         public AuthService(IOptions<HotelSearchApiSettings> options, IHttpClientFactory httpClientFactory)
         {
@@ -21,23 +24,18 @@ namespace HotelSearch.Authentication
             _searchApiSettings = options.Value;
         }
 
-        public async Task<string> GetBearerToken()
+        public async Task<string> AuthHeader()
         {
             if (IsTokenExpired())
             {
-                await GetToken();
+                var token = await GetTokenAsync();
+                SaveToken(token);
             }
 
             return "Bearer " + _authInfo?.AccessToken;
         }
 
-        public async Task Reauthorize() => await GetToken();
-
-        private bool IsTokenExpired() =>
-            // TODO: Implement expiration logic
-            false;
-
-        private async Task GetToken()
+        private async Task<AuthResponse> GetTokenAsync()
         {
             var client = _httpClientFactory.CreateClient("auth-client");
 
@@ -45,13 +43,24 @@ namespace HotelSearch.Authentication
 
             if (getTokenResponse.StatusCode == HttpStatusCode.Unauthorized)
             {
-                throw new AuthenticationException("Could not get authenticated with the API key and Secret");
+                throw new AuthenticationException(
+                    "Could not get authenticated with the API key and Secret, check credentials");
             }
 
-            getTokenResponse.EnsureSuccessStatusCode();
             var json = await getTokenResponse.Content.ReadAsStringAsync();
 
-            _authInfo = JsonConvert.DeserializeObject<AuthResponse>(json);
+            return JsonConvert.DeserializeObject<AuthResponse>(json);
+        }
+
+        private bool IsTokenExpired() => TokenValidTo() < DateTime.UtcNow;
+
+        private DateTime TokenValidTo() =>
+            _tokenReceivedUtc.AddSeconds(_authInfo?.ExpiresIn ?? _defaultExpireInSeconds);
+
+        private void SaveToken(AuthResponse authResponse)
+        {
+            _authInfo = authResponse;
+            _tokenReceivedUtc = DateTime.UtcNow;
         }
 
         private FormUrlEncodedContent ApiKeyAndSecret()

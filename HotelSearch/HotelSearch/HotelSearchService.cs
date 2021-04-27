@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HotelSearch.Authentication;
 using Newtonsoft.Json;
-using Polly;
-using Polly.Retry;
 
 namespace HotelSearch.HotelSearch
 {
@@ -18,13 +16,11 @@ namespace HotelSearch.HotelSearch
         private readonly IAuthService _authService;
         private readonly IHttpClientFactory _httpClientFactory;
 
-        private readonly AsyncRetryPolicy<HttpResponseMessage> _httpReauthorizePolicy;
 
         public HotelSearchService(IAuthService authService, IHttpClientFactory httpClientFactory)
         {
             _authService = authService;
             _httpClientFactory = httpClientFactory;
-            _httpReauthorizePolicy = WhenUnauthorizedGetNewToken();
         }
 
         public async Task<(HotelResponse? response, bool success)> GetHotels(FilterHotelsRequest request)
@@ -38,10 +34,9 @@ namespace HotelSearch.HotelSearch
         {
             var client = _httpClientFactory.CreateClient("hotel-search");
 
-            client.DefaultRequestHeaders.Add("Authorization", await _authService.GetBearerToken());
+            client.DefaultRequestHeaders.Add("Authorization", await _authService.AuthHeader());
 
-            var filteredHotelsResponse = await _httpReauthorizePolicy.ExecuteAsync(
-                async () => await client.GetAsync("hotel-offers?" + BuildQuery(request)));
+            var filteredHotelsResponse = await client.GetAsync("hotel-offers?" + BuildQuery(request));
 
             var hotels =
                 JsonConvert.DeserializeObject<AmadeusHotelsResponse>(await filteredHotelsResponse.Content
@@ -53,19 +48,31 @@ namespace HotelSearch.HotelSearch
 
         private static HotelResponse? MapResponse(AmadeusHotelsResponse? hotels)
         {
-            var hotelDtos = hotels?.Data?.Select(h => new HotelDto
+            var hotelDtos = new List<HotelDto>();
+
+            foreach (var hotel in hotels?.Data ?? new List<HotelOffers>())
             {
-                Rating = h.Hotel.Rating,
-                Description = h.Hotel.Description.Text,
-                Name = h.Hotel.Name,
-                IsAvailable = h.Available,
-                Availability = h.Offers.Select(o => new AvailabilityDto
+                var hotelDto = new HotelDto
                 {
-                    Price = o.Price.Total,
-                    CheckIn = o.CheckInDate,
-                    CheckOut = o.CheckOutDate
-                }).ToList()
-            }).ToList();
+                    Rating = hotel.Hotel.Rating,
+                    Description = hotel.Hotel.Description?.Text,
+                    Name = hotel.Hotel.Name,
+                    IsAvailable = hotel.Available
+                };
+
+                if (hotel?.Offers != null)
+                {
+                    hotelDto.Availability.AddRange(hotel.Offers.Select(o => new AvailabilityDto
+                    {
+                        Price = o.Price.Total,
+                        CheckIn = o.CheckInDate,
+                        CheckOut = o.CheckOutDate
+                    }));
+                }
+
+                hotelDtos.Add(hotelDto);
+            }
+
 
             return new HotelResponse {Hotels = hotelDtos};
         }
@@ -81,16 +88,5 @@ namespace HotelSearch.HotelSearch
 
         private string FormatDate(DateTime? dateTime) =>
             dateTime.HasValue ? dateTime.Value.ToString("s").Split("T")[0] : string.Empty;
-
-        private AsyncRetryPolicy<HttpResponseMessage> WhenUnauthorizedGetNewToken() =>
-            Policy
-                .HandleResult<HttpResponseMessage>(r => !r.IsSuccessStatusCode)
-                .RetryAsync(3, async (response, _) =>
-                {
-                    if (response.Result.StatusCode == HttpStatusCode.Unauthorized)
-                    {
-                        await _authService.Reauthorize();
-                    }
-                });
     }
 }

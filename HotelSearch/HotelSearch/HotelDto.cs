@@ -18,6 +18,6 @@ namespace HotelSearch.HotelSearch
         public bool IsAvailable { get; set; }
 
         [JsonProperty("availability")]
-        public List<AvailabilityDto>? Availability { get; set; }
+        public List<AvailabilityDto> Availability { get; set; } = new();
     }
 }
