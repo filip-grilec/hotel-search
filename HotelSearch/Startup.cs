@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Polly;
 
 namespace HotelSearch
 {
@@ -33,17 +34,16 @@ namespace HotelSearch
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "HotelSearch", Version = "v1"});
             });
             services.AddMemoryCache();
-            services.AddHttpClient("auth-client", c =>
-            {
-                c.BaseAddress = new Uri("https://test.api.amadeus.com/v1/security/oauth2/");
-                // c.DefaultRequestHeaders.Add("Authorization", "Bearer " + DateTime.Now);
-            });
+            services.AddHttpClient("auth-client",
+                    c => { c.BaseAddress = new Uri("https://test.api.amadeus.com/v1/security/oauth2/"); })
+                .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(500)));
+            
             services.AddHttpClient("hotel-search", c =>
             {
                 c.BaseAddress = new Uri("https://test.api.amadeus.com/v2/shopping/");
                 // c.DefaultRequestHeaders.Add("Authorization", "Bearer " + DateTime.Now);
             });
-            
+
             services.Configure<HotelSearchApiSettings>(Configuration.GetSection(nameof(HotelSearchApiSettings)));
             services.AddSingleton<AuthTokenOptions>();
         }

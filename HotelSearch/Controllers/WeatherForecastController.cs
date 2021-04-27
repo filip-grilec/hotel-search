@@ -39,13 +39,15 @@ namespace HotelSearch.Controllers
         };
 
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IAuthService _authService;
         private readonly HotelSearchApiSettings _searchApiSettings;
 
         public WeatherForecastController(IMemoryCache cache, IHttpClientFactory httpClientFactory,
-            IOptions<HotelSearchApiSettings> options)
+            IOptions<HotelSearchApiSettings> options, IAuthService authService)
         {
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
             _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+            _authService = authService;
             _searchApiSettings = options.Value;
         }
 
@@ -71,7 +73,8 @@ namespace HotelSearch.Controllers
             var hotelClient = _httpClientFactory.CreateClient("hotel-search");
 
 
-            hotelClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + authInfo.AccessToken);
+             var (authorization, bearerToken) = await _authService.GetAuthHeaders();
+            hotelClient.DefaultRequestHeaders.Add(authorization, bearerToken);
             
             var hotelResponse = await hotelClient.GetAsync("hotel-offers?cityCode=PAR&checkInDate=2021-06-01&checkOutDate=2021-06-10&roomQuantity=1&adults=1&radius=100&radiusUnit=KM&paymentPolicy=NONE&includeClosed=true&bestRateOnly=true&view=FULL&sort=NONE&page%5Blimit%5D=50");
 
