@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace HotelSearch.HotelSearch
 {
@@ -11,6 +12,12 @@ namespace HotelSearch.HotelSearch
         public decimal Rating { get; set; }
 
         [JsonProperty("description")]
-        public decimal Description { get; set; }
+        public string? Description { get; set; }
+
+        [JsonProperty("isAvailable")]
+        public bool IsAvailable { get; set; }
+
+        [JsonProperty("availability")]
+        public List<AvailabilityDto>? Availability { get; set; }
     }
 }

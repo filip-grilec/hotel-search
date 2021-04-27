@@ -8,26 +8,34 @@ using Newtonsoft.Json;
 
 namespace HotelSearch.Authentication
 {
-    public class AuthServiceService : IAuthService
+    public class AuthService : IAuthService
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly HotelSearchApiSettings _searchApiSettings;
 
         private AuthResponse? _authInfo;
 
-        public AuthServiceService(IOptions<HotelSearchApiSettings> options, IHttpClientFactory httpClientFactory)
+        public AuthService(IOptions<HotelSearchApiSettings> options, IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
             _searchApiSettings = options.Value;
         }
-        public async Task Authenticate()
+       
+        public async Task<string> GetBearerToken()
         {
-            await GetToken();
+            if (InvalidToken() || IsTokenExpired())
+            {
+                await GetToken();
+            }
+            return "Bearer "+ _authInfo?.AccessToken;
         }
 
-        public async Task<(string, string)> GetAuthHeaders()
+        private bool InvalidToken() => string.IsNullOrEmpty(_authInfo?.AccessToken);
+
+        private bool IsTokenExpired()
         {
-            return ("Authorization", "Bearer "+ _authInfo?.AccessToken);
+            // TODO: Implement expiration logic
+            return false;
         }
 
         private async Task GetToken()

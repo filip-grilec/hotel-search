@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace QuickType
+namespace HotelSearch.HotelSearch
 {
     public class HotelsResponse
     {
         [JsonProperty("data")]
-        public HotelOffers[] Data { get; set; }
+        public List<HotelOffers> Data { get; set; }
 
         [JsonProperty("meta")]
         public Meta Meta { get; set; }
@@ -24,7 +25,7 @@ namespace QuickType
         public bool Available { get; set; }
 
         [JsonProperty("offers")]
-        public Offer[] Offers { get; set; }
+        public List<Offer> Offers { get; set; }
 
         [JsonProperty("self")]
         public Uri Self { get; set; }
@@ -72,16 +73,16 @@ namespace QuickType
         public HotelDescription Description { get; set; }
 
         [JsonProperty("amenities")]
-        public string[] Amenities { get; set; }
+        public List<string> Amenities { get; set; }
 
         [JsonProperty("media", NullValueHandling = NullValueHandling.Ignore)]
-        public Media[] Media { get; set; }
+        public List<Media> Media { get; set; }
     }
 
     public class Address
     {
         [JsonProperty("lines")]
-        public string[] Lines { get; set; }
+        public List<string> Lines { get; set; }
 
         [JsonProperty("postalCode")]
         public long PostalCode { get; set; }
@@ -213,10 +214,10 @@ namespace QuickType
     public class AcceptedPayments
     {
         [JsonProperty("creditCards")]
-        public string[] CreditCards { get; set; }
+        public List<string> CreditCards { get; set; }
 
         [JsonProperty("methods")]
-        public string[] Methods { get; set; }
+        public List<string> Methods { get; set; }
     }
 
     public class HoldTime
@@ -246,7 +247,7 @@ namespace QuickType
         public Average Average { get; set; }
 
         [JsonProperty("changes")]
-        public Change[] Changes { get; set; }
+        public List<Change> Changes { get; set; }
     }
 
     public class Average

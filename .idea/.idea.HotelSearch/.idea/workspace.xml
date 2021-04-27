@@ -7,14 +7,18 @@
     <projectFile>HotelSearch/HotelSearch.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Made Api Call">
-      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" afterDir="false" />
+    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Add polly">
+      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/AvailabilityDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelSearch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelSearch/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/AuthTokenOptions.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelsResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelSearch/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,16 +38,23 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelDto.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelResponse.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelsResponse.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -56,16 +67,17 @@
       <option value="$PROJECT_DIR$/HotelSearch/Properties/launchSettings.json" />
       <option value="$PROJECT_DIR$/HotelSearch/appsettings.json" />
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/HotelSearchApiSettings.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelsResponse.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/AuthTokenOptions.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/IAuthenticate.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/Startup.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelsResponse.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/Startup.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1riNvakuMozbnmdH67O4pRiuctj" />
@@ -125,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619455181862</updated>
       <workItem from="1619455199220" duration="3883000" />
-      <workItem from="1619460909197" duration="12991000" />
+      <workItem from="1619460909197" duration="15483000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1619455226473</created>
@@ -155,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619511754519</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add polly">
+      <created>1619515087454</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619515087454</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,25 +200,7 @@
     <MESSAGE value="Add test project" />
     <MESSAGE value="Added memory cache" />
     <MESSAGE value="Made Api Call" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made Api Call" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs</url>
-          <line>56</line>
-          <properties documentPath="C:\git\playground\React Default template\HotelSearch\HotelSearch\Controllers\WeatherForecastController.cs" initialLine="48" containingFunctionPresentation="method 'Get'">
-            <startOffsets>
-              <option value="1931" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1991" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Add polly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add polly" />
   </component>
 </project>
