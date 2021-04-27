@@ -4,12 +4,8 @@
     <projectFile>HotelSearch/HotelSearch.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Cleanup">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelSearch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelSearch/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" afterDir="false" />
+    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Fix null reference exception">
+      <change beforePath="$PROJECT_DIR$/HotelSearch.sln" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +28,7 @@
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch.Tests/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelDto.cs" root0="SKIP_HIGHLIGHTING" />
@@ -40,6 +37,7 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/HotelSearchApiSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelSearchService.cs" root0="SKIP_HIGHLIGHTING" />
@@ -57,6 +55,7 @@
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/HotelSearchApiSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelSearchService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -67,14 +66,22 @@
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/HotelsController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch.Tests/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelSearchService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/HotelsController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch.Tests/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/WeatherForecastController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -92,19 +99,27 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelSearchService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Authentication/IAuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelSearchService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/HotelSearch/HotelSearchService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/44EC54FB-C892-404D-A687-6260A5219E12/5C/HttpResponseMessage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/git/playground/React Default template/HotelSearch/HotelSearch/Controllers/HotelsController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HotelSearch.Tests/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -207,7 +222,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619455181862</updated>
       <workItem from="1619455199220" duration="3883000" />
-      <workItem from="1619460909197" duration="30902000" />
+      <workItem from="1619460909197" duration="31238000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1619455226473</created>
@@ -279,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619536448179</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fix null reference exception">
+      <created>1619543214846</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1619543214846</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +333,8 @@
     <MESSAGE value="Finish search" />
     <MESSAGE value="Ensure ensure ok result" />
     <MESSAGE value="Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
+    <MESSAGE value="Fix null reference exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix null reference exception" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -341,6 +364,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs</url>
+          <line>54</line>
+          <properties documentPath="C:\git\playground\React Default template\HotelSearch\HotelSearch\HotelSearch\HotelSearchService.cs" initialLine="54" containingFunctionPresentation="method 'MapResponse'">
+            <startOffsets>
+              <option value="1922" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2195" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
