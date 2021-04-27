@@ -13,30 +13,29 @@ namespace HotelSearch.Authentication
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly HotelSearchApiSettings _searchApiSettings;
 
-        private AuthResponse? _authInfo = new(){AccessToken = "This is just to show reauthorize functionality"};
+        private AuthResponse? _authInfo = new() {AccessToken = "This is just to show reauthorize functionality"};
 
         public AuthService(IOptions<HotelSearchApiSettings> options, IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
             _searchApiSettings = options.Value;
         }
-       
+
         public async Task<string> GetBearerToken()
         {
             if (IsTokenExpired())
             {
                 await GetToken();
             }
-            return "Bearer "+ _authInfo?.AccessToken;
+
+            return "Bearer " + _authInfo?.AccessToken;
         }
 
         public async Task Reauthorize() => await GetToken();
 
-        private bool IsTokenExpired()
-        {
+        private bool IsTokenExpired() =>
             // TODO: Implement expiration logic
-            return false;
-        }
+            false;
 
         private async Task GetToken()
         {
@@ -45,11 +44,13 @@ namespace HotelSearch.Authentication
             var getTokenResponse = await client.PostAsync("token", ApiKeyAndSecret());
 
             if (getTokenResponse.StatusCode == HttpStatusCode.Unauthorized)
+            {
                 throw new AuthenticationException("Could not get authenticated with the API key and Secret");
+            }
 
             getTokenResponse.EnsureSuccessStatusCode();
             var json = await getTokenResponse.Content.ReadAsStringAsync();
-            
+
             _authInfo = JsonConvert.DeserializeObject<AuthResponse>(json);
         }
 

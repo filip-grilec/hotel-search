@@ -1,13 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using HotelSearch.Authentication;
+﻿using System.Threading.Tasks;
 using HotelSearch.HotelSearch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using Newtonsoft.Json;
-using Polly;
-using Polly.Retry;
 
 namespace HotelSearch.Controllers
 {
@@ -16,14 +9,6 @@ namespace HotelSearch.Controllers
     public class HotelsController : ControllerBase
     {
         private readonly IHotelSearchService _hotelSearchService;
-
-        private static readonly string[] Summaries =
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly IAuthService _authService;
-        private readonly IHttpClientFactory _httpClientFactory;
 
         public HotelsController(IHotelSearchService hotelSearchService)
         {

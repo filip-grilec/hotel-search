@@ -1,17 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HotelSearch.Authentication;
 using HotelSearch.HotelSearch;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Polly;
 
@@ -38,11 +32,9 @@ namespace HotelSearch
             services.AddHttpClient("auth-client",
                     c => { c.BaseAddress = new Uri("https://test.api.amadeus.com/v1/security/oauth2/"); })
                 .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(500)));
-            
-            services.AddHttpClient("hotel-search", c =>
-            {
-                c.BaseAddress = new Uri("https://test.api.amadeus.com/v2/shopping/");
-            });
+
+            services.AddHttpClient("hotel-search",
+                c => { c.BaseAddress = new Uri("https://test.api.amadeus.com/v2/shopping/"); });
 
             services.Configure<HotelSearchApiSettings>(Configuration.GetSection(nameof(HotelSearchApiSettings)));
             services.AddSingleton<IAuthService, AuthService>();
