@@ -13,7 +13,7 @@ namespace HotelSearch.Authentication
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly HotelSearchApiSettings _searchApiSettings;
 
-        private AuthResponse? _authInfo;
+        private AuthResponse? _authInfo = new(){AccessToken = "This is just to show reauthorize functionality"};
 
         public AuthService(IOptions<HotelSearchApiSettings> options, IHttpClientFactory httpClientFactory)
         {
@@ -23,14 +23,14 @@ namespace HotelSearch.Authentication
        
         public async Task<string> GetBearerToken()
         {
-            if (InvalidToken() || IsTokenExpired())
+            if (IsTokenExpired())
             {
                 await GetToken();
             }
             return "Bearer "+ _authInfo?.AccessToken;
         }
 
-        private bool InvalidToken() => string.IsNullOrEmpty(_authInfo?.AccessToken);
+        public async Task Reauthorize() => await GetToken();
 
         private bool IsTokenExpired()
         {

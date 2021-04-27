@@ -42,7 +42,6 @@ namespace HotelSearch
             services.AddHttpClient("hotel-search", c =>
             {
                 c.BaseAddress = new Uri("https://test.api.amadeus.com/v2/shopping/");
-                // c.DefaultRequestHeaders.Add("Authorization", "Bearer " + DateTime.Now);
             });
 
             services.Configure<HotelSearchApiSettings>(Configuration.GetSection(nameof(HotelSearchApiSettings)));
