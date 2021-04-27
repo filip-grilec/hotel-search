@@ -7,19 +7,14 @@
     <projectFile>HotelSearch/HotelSearch.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Add polly">
-      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/AvailabilityDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" afterDir="false" />
+    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Refactor">
+      <change afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/FilterHotelsRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelSearch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelSearch/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/AuthTokenOptions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelsResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Controllers/HotelsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/AmadeusHotelsResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelSearch/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +68,13 @@
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Startup.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/AmadeusHotelsResponse.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/Controllers/HotelsController.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1riNvakuMozbnmdH67O4pRiuctj" />
@@ -137,7 +134,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619455181862</updated>
       <workItem from="1619455199220" duration="3883000" />
-      <workItem from="1619460909197" duration="15483000" />
+      <workItem from="1619460909197" duration="20411000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1619455226473</created>
@@ -174,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619515087454</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactor">
+      <created>1619517672517</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619517672517</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +205,7 @@
     <MESSAGE value="Added memory cache" />
     <MESSAGE value="Made Api Call" />
     <MESSAGE value="Add polly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add polly" />
+    <MESSAGE value="Refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
   </component>
 </project>

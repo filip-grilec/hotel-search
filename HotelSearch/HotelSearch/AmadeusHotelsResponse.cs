@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 
 namespace HotelSearch.HotelSearch
 {
-    public class HotelsResponse
+    public class AmadeusHotelsResponse
     {
         [JsonProperty("data")]
-        public List<HotelOffers> Data { get; set; }
+        public List<HotelOffers>? Data { get; set; }
 
         [JsonProperty("meta")]
         public Meta Meta { get; set; }
@@ -139,10 +139,10 @@ namespace HotelSearch.HotelSearch
         public string Id { get; set; }
 
         [JsonProperty("checkInDate")]
-        public DateTimeOffset CheckInDate { get; set; }
+        public DateTime? CheckInDate { get; set; }
 
         [JsonProperty("checkOutDate")]
-        public DateTimeOffset CheckOutDate { get; set; }
+        public DateTime? CheckOutDate { get; set; }
 
         [JsonProperty("rateCode")]
         public string RateCode { get; set; }
@@ -235,7 +235,7 @@ namespace HotelSearch.HotelSearch
         public string Base { get; set; }
 
         [JsonProperty("total")]
-        public string Total { get; set; }
+        public decimal Total { get; set; }
 
         [JsonProperty("variations")]
         public Variations Variations { get; set; }
