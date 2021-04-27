@@ -47,8 +47,9 @@ namespace HotelSearch.Authentication
             if (getTokenResponse.StatusCode == HttpStatusCode.Unauthorized)
                 throw new AuthenticationException("Could not get authenticated with the API key and Secret");
 
+            getTokenResponse.EnsureSuccessStatusCode();
             var json = await getTokenResponse.Content.ReadAsStringAsync();
-
+            
             _authInfo = JsonConvert.DeserializeObject<AuthResponse>(json);
         }
 
