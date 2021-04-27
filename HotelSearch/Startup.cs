@@ -28,7 +28,6 @@ namespace HotelSearch
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "HotelSearch", Version = "v1"});
             });
-            services.AddMemoryCache();
             services.AddHttpClient("auth-client",
                     c => { c.BaseAddress = new Uri("https://test.api.amadeus.com/v1/security/oauth2/"); })
                 .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(500)));
