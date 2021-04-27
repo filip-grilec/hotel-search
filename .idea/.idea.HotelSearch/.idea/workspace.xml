@@ -4,8 +4,8 @@
     <projectFile>HotelSearch/HotelSearch.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Fix null reference exception">
-      <change beforePath="$PROJECT_DIR$/HotelSearch.sln" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch.sln" afterDir="false" />
+    <list default="true" id="11e42b46-f143-4a1c-af47-7764faed4d97" name="Default Changelist" comment="Remove test project">
+      <change beforePath="$PROJECT_DIR$/HotelSearch/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelSearch/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +155,6 @@
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/AmadeusHotelsResponse.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/IHotelSearchService.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Controllers/WeatherForecastController.cs" />
-      <option value="$PROJECT_DIR$/HotelSearch/Startup.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelResponse.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Controllers/HotelsController.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/IAuthService.cs" />
@@ -163,6 +162,7 @@
       <option value="$PROJECT_DIR$/HotelSearch/Authentication/AuthService.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelDto.cs" />
       <option value="$PROJECT_DIR$/HotelSearch/HotelSearch/HotelSearchService.cs" />
+      <option value="$PROJECT_DIR$/HotelSearch/Startup.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1riNvakuMozbnmdH67O4pRiuctj" />
@@ -222,7 +222,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619455181862</updated>
       <workItem from="1619455199220" duration="3883000" />
-      <workItem from="1619460909197" duration="31238000" />
+      <workItem from="1619460909197" duration="31352000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1619455226473</created>
@@ -301,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619543214846</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Remove test project">
+      <created>1619543284666</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1619543284666</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +341,8 @@
     <MESSAGE value="Ensure ensure ok result" />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Fix null reference exception" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix null reference exception" />
+    <MESSAGE value="Remove test project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove test project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

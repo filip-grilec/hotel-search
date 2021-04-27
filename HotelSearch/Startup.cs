@@ -34,7 +34,8 @@ namespace HotelSearch
                 .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(500)));
 
             services.AddHttpClient("hotel-search",
-                c => { c.BaseAddress = new Uri("https://test.api.amadeus.com/v2/shopping/"); });
+                c => { c.BaseAddress = new Uri("https://test.api.amadeus.com/v2/shopping/"); }).
+                AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(500)));
 
             services.Configure<HotelSearchApiSettings>(Configuration.GetSection(nameof(HotelSearchApiSettings)));
             services.AddSingleton<IAuthService, AuthService>();
